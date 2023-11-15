@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 15:40:13 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/15 10:35:54 by dieloren         ###   ########.fr       */
+/*   Created: 2023/11/15 10:54:02 by dieloren          #+#    #+#             */
+/*   Updated: 2023/11/15 12:15:26 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
-	int	sign;
-	int	number;
+	size_t	i;
+	char	*str1;
+	char	*str2;
 
 	i = 0;
-	sign = 1;
-	number = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i] == '-')
-			sign += -1;
-	i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	str1 = (char *)s1;
+	str2 = (char *)s2;
+	while ((str1[i] != '\0' || str2[i] != '\0') && i < n)
 	{
-		number = number * 10 + (str[i] - '0');
+		if (s1[i] != s2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 		i++;
 	}
-	number *= sign;
-	return (number);
+	return (0);
 }

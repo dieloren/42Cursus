@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 15:40:13 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/15 10:35:54 by dieloren         ###   ########.fr       */
+/*   Created: 2023/11/15 12:10:21 by dieloren          #+#    #+#             */
+/*   Updated: 2023/11/15 12:16:21 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+#include "libft.h"
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
-	int	sign;
-	int	number;
+	int				i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
 	i = 0;
-	sign = 1;
-	number = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i] == '-')
-			sign += -1;
-	i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	*str1 = (unsigned char *)s1;
+	*str2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		number = number * 10 + (str[i] - '0');
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 		i++;
 	}
-	number *= sign;
-	return (number);
+	return (0);
 }

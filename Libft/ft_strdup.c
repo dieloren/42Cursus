@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 15:40:13 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/15 10:35:54 by dieloren         ###   ########.fr       */
+/*   Created: 2023/11/15 12:47:46 by dieloren          #+#    #+#             */
+/*   Updated: 2023/11/15 12:48:10 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+#include "libft.h"
+
+char	*ft_strdup(const char *s1)
 {
-	int	i;
-	int	sign;
-	int	number;
+	char	*string;
+	int		i;
 
 	i = 0;
-	sign = 1;
-	number = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i] == '-')
-			sign += -1;
-	i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	string = ((char *)malloc(sizeof(char) * ft_strlen(s1) + 1));
+	if (!string)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		number = number * 10 + (str[i] - '0');
+		string[i] = s1[i];
 		i++;
 	}
-	number *= sign;
-	return (number);
+	string[i] = '\0';
+	return (string);
 }

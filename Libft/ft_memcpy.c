@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 15:40:13 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/15 10:35:54 by dieloren         ###   ########.fr       */
+/*   Created: 2023/11/15 11:25:27 by dieloren          #+#    #+#             */
+/*   Updated: 2023/11/15 11:45:15 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	int	number;
+#include "libft.h"
 
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char	*destiny;
+	char	*source;
+	size_t	i;
+
+	destiny = ((char *) dst);
+	source = ((char *) src);
 	i = 0;
-	sign = 1;
-	number = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i] == '-')
-			sign += -1;
-	i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	if (src == 0 && dst == 0)
+		return (dst);
+	while (i < n)
 	{
-		number = number * 10 + (str[i] - '0');
+		destiny[i] = source[i];
 		i++;
 	}
-	number *= sign;
-	return (number);
+	return (dst);
 }
