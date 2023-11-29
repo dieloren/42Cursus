@@ -6,7 +6,7 @@
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:53:23 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/25 16:50:58 by dieloren         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:55:13 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char	*ft_strrchr(const char *s, int c);
 
 #endif

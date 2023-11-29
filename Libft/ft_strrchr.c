@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 16:31:04 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/29 11:01:14 by dieloren         ###   ########.fr       */
+/*   Created: 2023/11/29 10:52:40 by dieloren          #+#    #+#             */
+/*   Updated: 2023/11/29 10:54:16 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (n == -2147483648)
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = 0;
+	while (s[i] != '\0')
 	{
-		ft_putchar_fd('-', fd);
-		ft_putchar_fd('2', fd);
-		ft_putnbr_fd(147483648, fd);
+		if (s[i] == (char)c)
+		{
+			str = ((char *)&s[i]);
+		}
+		i++;
 	}
-	else if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
-	}
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(-n, fd);
-	}
-	else
-	{
-		ft_putchar_fd(n + '0', fd);
-	}
+	if (s[i] == (char)c)
+		str = ((char *)&s[i]);
+	return ((char *)str);
 }

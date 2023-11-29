@@ -6,7 +6,7 @@
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:00:40 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/15 12:08:10 by dieloren         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:23:49 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
+	char	*string;
+	char	target;
 	size_t	i;
-	char	*str;
-	char	chr;
 
+	string = ((char *)s);
+	target = ((char)c);
 	i = 0;
-	str = ((char *)s);
-	chr = ((char)c);
 	while (i < n)
 	{
-		if (str[i] == chr)
-			return (str[i]);
+		if (string[i] != target)
+			i++;
+		else
+			return ((char *)&s[i]);
 	}
-	return (NULL);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:24:37 by dieloren          #+#    #+#             */
-/*   Updated: 2023/11/28 12:24:37 by dieloren         ###   ########.fr       */
+/*   Updated: 2023/11/29 10:45:03 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**ft_split(char const *s, char c)
 	i = ft_lesscode(matrix, number_words);
 	j = 0;
 	while (j < number_words && s[i])
-	{	
+	{
 		if (s[i] != c && s[i] != '\0')
 		{
 			matrix[j++] = ft_substr(s, i, (ft_next_del(s, c, i) - i));
