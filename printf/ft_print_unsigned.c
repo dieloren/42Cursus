@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dieloren <dieloren@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 23:03:11 by dieloren          #+#    #+#             */
-/*   Updated: 2024/01/17 14:14:23 by dieloren         ###   ########.fr       */
+/*   Created: 2024/01/17 20:41:27 by dieloren          #+#    #+#             */
+/*   Updated: 2024/01/17 20:41:27 by dieloren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_print_unsigned(unsigned int num)
+{
+	int	printed_chars;
 
-int ft_printf(const char *format, ...);
-int	ft_check_character(const char *format, int i, va_list args);
-int	ft_print_string(char *str);
-int	ft_print_char(char c);
-int	ft_print_number(int num);
-
-#endif
+	printed_chars = 0;
+	if (num == 0)
+		printed_chars += ft_print_char('0');
+	else
+	{
+		if (num / 10 != 0)
+			ft_print_unsigned(num / 10);
+		ft_print_char((num % 10) + '0');
+		while (num > 0)
+		{
+			num /= 10;
+			printed_chars++;
+		}
+	}
+	return (printed_chars);
+}

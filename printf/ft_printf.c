@@ -18,19 +18,14 @@ int	ft_check_character(const char *format, int i, va_list args)
 
 	printed_chars = 0;
 	if (format[i + 1] == '%')
-	{
-		write(1, '%', 1);
-		return (1);
-	}
+		printed_chars += ft_print_char('%');
 	else if (format[i + 1] == 'c')
-	{
-		write(1, va_arg(args, int), 1);
-		return (1);
-	}
+		printed_chars += ft_print_char(va_arg(args, int));
 	else if (format[i + 1] == 's')
-	{
-		
-	}
+		printed_chars += ft_print_string(va_arg(args, char*));
+	else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+		printed_chars += ft_print_number(va_arg(args, int));
+	return (printed_chars);
 }
 
 int	ft_printf(const char *format, ...)
@@ -47,12 +42,10 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			printed_chars += ft_check_character(format, i, args);
+			i++;
 		}
 		else
-		{
-			write(1, &format[i], 1);
-			printed_chars++;
-		}
+			printed_chars += ft_print_char(format[i]);
 		i++;
 	}
 }
